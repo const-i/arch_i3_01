@@ -178,14 +178,14 @@ default_floating_border pixel 1
 
 # Assign Workspaces to clients
 assign [class="firefox"] $ws2
-assign [class="Gedit"] $ws3
+assign [class="Geany"] $ws3
 
 # Startup Applications
 exec --no-startup-id i3-msg 'workspace '$ws1'; exec urxvt'
 
 # Bind some specific applications
 bindsym Control+Mod1+f exec --no-startup-id firefox -private
-bindsym Control+Mod1+g exec --no-startup-id gedit
+bindsym Control+Mod1+g exec --no-startup-id geany
 
 
 
