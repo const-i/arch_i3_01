@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Disable the beep
+xset -b
+
+# Set xterm as the default terminal
+#export TERMINAL=xterm
