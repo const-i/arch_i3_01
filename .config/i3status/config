@@ -9,11 +9,12 @@ order += "wireless wlp5s0"
 order += "wireless wlp1s0"
 order += "battery 0"
 order += "cpu_temperature 0"
-order += "load"
+order += "cpu_usage"
 order += "memory"
 order += "tztime local"
 
 #order += "ipv6"
+#order += "load"
 #order += "run_watch DHCP"
 #order += "run_watch VPNC"
 #order += "path_exists VPN"
@@ -21,28 +22,28 @@ order += "tztime local"
 #order += "tztime berlin"
 
 disk "/" {
-        format = "%free %percentage_used"
+        format = "💽%free %percentage_used"
 }
 
 wireless wlp5s0 {
         #format_up = "W: (%quality at %essid, %bitrate) %ip"
-        format_up = "W: %ip"
-        format_down = "W: down"
+        format_up = "📶%quality"
+        format_down = "📶 down"
 }
 
 wireless wlp1s0 {
         #format_up = "W: (%quality at %essid, %bitrate) %ip"
-        format_up = "W: %ip"
-        format_down = "W: down"
+        format_up = "📶%quality"
+        format_down = "📶 down"
 }
 
 battery 0 {
-        format = "%status %percentage %remaining %emptytime"
+        format = "%status %percentage ⌛%remaining ⏳%emptytime"
         format_down = "No battery"
-        status_chr = "CHR"
-        status_bat = "BAT"
+        status_chr = "🔌"
+        status_bat = "🔋"
         status_unk = "UNK"
-        status_full = "FULL"
+        status_full = "⚡"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
         last_full_capacity = false
@@ -50,7 +51,7 @@ battery 0 {
 
 
 cpu_temperature 0 {
-        format = "T: %degrees °C"
+        format = "🌡️%degrees °C"
         path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
@@ -65,12 +66,16 @@ tztime local {
 }
 
 
+cpu_usage {
+	format = "💻%usage "
+}
+
 load {
         format = "%5min"
 }
 
 memory {
-        format = "%percentage_used"
+        format = "💾%percentage_used"
         threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 }
